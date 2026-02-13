@@ -5,7 +5,7 @@ from sklearn.linear_model import LinearRegression
 # CSV load
 df = pd.read_csv(r"C:\Users\pintu\OneDrive\Desktop\classpractice\class_assignment\Gold Price.csv")
 
-# Columns check (optional but good)
+# Columns check 
 print(df.columns)
 print(df.head())
 
