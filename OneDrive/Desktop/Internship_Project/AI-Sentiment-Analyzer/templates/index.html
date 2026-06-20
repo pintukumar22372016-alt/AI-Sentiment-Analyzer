@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Sentiment Analyzer | Dynamic Insights</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Chart.js for visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>AI Sentiment <span class="gradient-text">Analyzer</span></h1>
+            <p>Experience real-time AI emotion detection with a state-of-the-art interface.</p>
+        </header>
+
+        <main>
+            <!-- Input Section -->
+            <section class="glass-panel input-section">
+                <h2>Analyze Text</h2>
+                <form id="analyze-form">
+                    <textarea id="text-input" placeholder="Type or paste your text here..." required></textarea>
+                    <div class="controls">
+                        <button type="submit" id="submit-btn" class="glow-on-hover">
+                            <span>Analyze Sentiment</span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Results Section (Hidden initially) -->
+            <section class="glass-panel results-section hidden" id="results-section">
+                <h2>Analysis Results</h2>
+                <div class="result-card">
+                    <div class="classification" id="result-classification">Neutral</div>
+                    <div class="scores">
+                        <div class="score-item">
+                            <span class="label">Positive</span>
+                            <div class="progress-bar"><div class="fill pos-fill" id="bar-pos"></div></div>
+                            <span class="value" id="val-pos">0%</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="label">Neutral</span>
+                            <div class="progress-bar"><div class="fill neu-fill" id="bar-neu"></div></div>
+                            <span class="value" id="val-neu">0%</span>
+                        </div>
+                        <div class="score-item">
+                            <span class="label">Negative</span>
+                            <div class="progress-bar"><div class="fill neg-fill" id="bar-neg"></div></div>
+                            <span class="value" id="val-neg">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dashboard / History Section -->
+            <section class="glass-panel dashboard-section">
+                <div class="dashboard-header">
+                    <h2>Insights Dashboard</h2>
+                    <span id="db-status" class="status-badge checking">Checking DB...</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="sentimentChart"></canvas>
+                </div>
+                <div class="history-list" id="history-list">
+                    <!-- History items injected here -->
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Powered by Flask, VADER, and MongoDB</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
